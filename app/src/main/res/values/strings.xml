@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">YourBank</string>
+    <string name="additional_information">Дополнительная информация</string>
+    <string name="Your_card">Ваши карты</string>
+    <string name="history">история запросов</string>
+    <string name="add_card">+ Добавить карту</string>
+    <string name="brand">BRAND</string>
+    <string name="type">TYPE</string>
+    <string name="country">COUNTRY -</string>
+    <string name="detailed_information">Нажмите чтобы узнать более подробно</string>
+    <string name="bin_input">Введите BIN карты</string>
+    <string name="added_card">Добавить карту</string>
+    <string name="number_error">number error</string>
+    <string name="error_mess">BIN карты должен содердать 8 чисел</string>
 </resources>
