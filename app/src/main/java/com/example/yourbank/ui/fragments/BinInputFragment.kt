@@ -21,9 +21,15 @@ class BinInputFragment : BaseViewBindingFragment<BinInputFragmentBinding>(BinInp
         buttonAddCard.setOnClickListener {
 
             val bin = editText.text.toString()
+            val userName = editTextNameUser.text.toString()
 
             if(bin.length == 8) {
-                mainSearchBinFragment.callbackBinInput(bin.toInt())
+                if(userName.isNotEmpty()) {
+                    mainSearchBinFragment.callbackBinInput(bin.toInt(),userName)
+                } else {
+                    editTextNameUser.error = getString(R.string.error_empty_field)
+                    Toast.makeText(context,getString(R.string.error_mess_empty_field),Toast.LENGTH_SHORT).show()
+                }
             } else {
                 editText.error = getString(R.string.number_error)
                 Toast.makeText(context,getString(R.string.error_mess),Toast.LENGTH_SHORT).show()

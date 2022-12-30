@@ -12,4 +12,7 @@
     <string name="added_card">Добавить карту</string>
     <string name="number_error">number error</string>
     <string name="error_mess">BIN карты должен содердать 8 чисел</string>
+    <string name="user_name">Имя владельца</string>
+    <string name="error_empty_field">empty field</string>
+    <string name="error_mess_empty_field">введите имя</string>
 </resources>
