@@ -34,10 +34,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerAddedYouCard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:layout_gravity="center_vertical"
-                android:layout_marginBottom="12dp"
+                android:layout_marginBottom="6dp"
                 tools:itemCount="1"
                 tools:listitem="@layout/card_items" />
 
@@ -286,13 +286,12 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="480dp"
         android:layout_marginHorizontal="36dp"
         android:elevation="10dp"
         app:cardCornerRadius="46dp"
