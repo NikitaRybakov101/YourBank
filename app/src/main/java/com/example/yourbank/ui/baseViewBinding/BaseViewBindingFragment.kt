@@ -10,13 +10,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 
-abstract class BaseViewBindingFragment<VB : ViewBinding>(private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB) : Fragment() {
+abstract class BaseViewBindingFragment<VB : ViewBinding>(val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB) : Fragment() {
     private var _binding: VB? = null
 
-    private val binding
+    val binding
     get() = _binding ?: throw IllegalStateException("Trying to access binding")
 
-    private val uiScope by lazy {
+    val uiScope by lazy {
         CoroutineScope(Dispatchers.Main)
     }
 
