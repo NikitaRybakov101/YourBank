@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
-        android:text="Nikita Rybakov"
+        android:text="@string/your_name"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/your_card_back" />
+            android:src="@drawable/back_card_2" />
 
         <com.example.yourbank.ui.customView.AnimationLoadingCard
             android:id="@+id/customProgressBar"
@@ -108,11 +108,11 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginEnd="40dp"
                 android:src="@drawable/chip_image_card"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textCountry" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textNameBank"
@@ -120,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="Tinkoff Bank"
+                tools:text="Ваш банк"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
-                android:text="NIKITA RYBAKOV"
+                tools:text="NIKITA RYBAKOV"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -142,6 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="@string/brand"
+                android:alpha="0"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/textNameBank"
                 app:layout_constraintTop_toBottomOf="@+id/textNameBank" />
@@ -150,7 +151,7 @@
                 android:id="@+id/textBrandCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Visa/Dankort"
+                tools:text="Visa/Dankort"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/textBrand"
                 app:layout_constraintTop_toBottomOf="@+id/textBrand"
@@ -160,18 +161,19 @@
                 android:id="@+id/textType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
                 android:text="@string/type"
+                android:alpha="0"
                 android:textSize="12sp"
-                app:layout_constraintStart_toEndOf="@+id/textBrandCard"
+                app:layout_constraintStart_toEndOf="@+id/textBrand"
                 app:layout_constraintTop_toBottomOf="@+id/textNameBank" />
 
             <TextView
                 android:id="@+id/textTypeCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Debit/Credit"
+                tools:text="Debit/Credit"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/textType"
                 app:layout_constraintTop_toBottomOf="@+id/textType"
@@ -181,31 +183,30 @@
                 android:id="@+id/textCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="2dp"
-                android:text="@string/country"
                 android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textCountryName"
-                app:layout_constraintTop_toTopOf="parent" />
+                tools:text="@string/country" />
 
             <TextView
                 android:id="@+id/textCountryName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
-                android:text="Denmark"
+                tools:text="ваша страна"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textCountry"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="@+id/textCountry" />
 
             <TextView
                 android:id="@+id/textBin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="BIN 4571 7360"
+                tools:text="BIN 4571 7360"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/textYourName"
                 app:layout_constraintStart_toStartOf="parent"
@@ -240,36 +241,58 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
+            <TextView
+                android:id="@+id/textCardNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                tools:text="CARD NUM LENGTH 16"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInfo" />
+
+            <TextView
+                android:id="@+id/textPrepaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="PREPAID - Yes"
+                android:textSize="12sp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textCardNumber" />
+
             <TextView
                 android:id="@+id/textWeb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Сайт   www.jyskebank.dk"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/textPrepaid"
+                tools:text="Сайт   www.jyskebank.dk" />
 
             <TextView
                 android:id="@+id/textPhone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Телефон   +4589893300"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textWeb" />
+                app:layout_constraintTop_toBottomOf="@+id/textWeb"
+                tools:text="Телефон   +4589893300" />
 
             <TextView
-                android:id="@+id/textCity"
+                android:id="@+id/textCountryInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:text="Страна/Город   Denmark/Hjørring"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textPhone" />
+                app:layout_constraintTop_toBottomOf="@+id/textPhone"
+                tools:text="Страна/Город   Denmark/Hjørring" />
 
             <TextView
                 android:id="@+id/textClickInfo"
@@ -281,7 +304,7 @@
                 android:textSize="8sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textCity"
+                app:layout_constraintTop_toBottomOf="@+id/textCountryInfo"
                 tools:ignore="SmallSp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,8 +11,6 @@ import kotlin.math.sin
 
 class AnimationLoadingCard @JvmOverloads constructor(context : Context, attrs : AttributeSet? = null, style: Int = 0) : View(context,attrs,style) , InterfaceAnimationLoadingCard {
 
-    private val paint = Paint().apply {}
-
     private val widthProgressBar = 10
     private val radiusProgressBar = 40
 
@@ -27,11 +25,11 @@ class AnimationLoadingCard @JvmOverloads constructor(context : Context, attrs : 
         render { value -> drawLoadingProgressBar(canvas,value)  }
     }
 
+    private val paint = Paint().apply { isAntiAlias = true }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         this.canvas = canvas
-
-        canvas.drawColor(Color.argb(0,0,0,0))
 
         if(isStart) {
             animProgressBar.render()
@@ -72,6 +70,7 @@ class AnimationLoadingCard @JvmOverloads constructor(context : Context, attrs : 
     }
 
     override fun stop() {
+        animProgressBar.speed = 0f
         isStart = false
     }
 }

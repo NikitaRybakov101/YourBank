@@ -6,10 +6,11 @@ import android.widget.Toast
 import com.example.yourbank.R
 import com.example.yourbank.databinding.BinInputFragmentBinding
 import com.example.yourbank.ui.baseViewBinding.BaseViewBindingFragment
+import com.example.yourbank.utils.showToast
 
 class BinInputFragment : BaseViewBindingFragment<BinInputFragmentBinding>(BinInputFragmentBinding::inflate) {
 
-    private lateinit var mainSearchBinFragment : CallbackBinInputInterface
+    private lateinit var mainSearchBinFragment : CallbackBinInputInterfaceAndRecycler
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -19,33 +20,40 @@ class BinInputFragment : BaseViewBindingFragment<BinInputFragmentBinding>(BinInp
 
     private fun checkButton() = with(binding) {
         buttonAddCard.setOnClickListener {
+            createYourCard()
+        }
 
-            val bin = editText.text.toString()
-            val userName = editTextNameUser.text.toString()
+        imageViewArrow.setOnClickListener {
+            mainSearchBinFragment.callbackCloseInputBin()
+        }
+    }
 
-            if(bin.length == 8) {
-                if(userName.isNotEmpty()) {
-                    mainSearchBinFragment.callbackBinInput(bin.toInt(),userName)
-                } else {
-                    editTextNameUser.error = getString(R.string.error_empty_field)
-                    Toast.makeText(context,getString(R.string.error_mess_empty_field),Toast.LENGTH_SHORT).show()
-                }
+    private fun createYourCard() = with(binding) {
+        val bin = editText.text.toString()
+        val userName = editTextNameUser.text.toString()
+
+        if(bin.length == 8) {
+            if(userName.isNotEmpty()) {
+                mainSearchBinFragment.callbackBinInput(bin,userName)
             } else {
-                editText.error = getString(R.string.number_error)
-                Toast.makeText(context,getString(R.string.error_mess),Toast.LENGTH_SHORT).show()
+                editTextNameUser.error = getString(R.string.error_empty_field)
+                context?.showToast(getString(R.string.error_mess_empty_field))
             }
+        } else {
+            editText.error = getString(R.string.number_error)
+            context?.showToast(getString(R.string.error_mess))
         }
     }
 
     companion object {
-        fun newInstance(mainSearchBinFragment: CallbackBinInputInterface) : BinInputFragment {
+        fun newInstance(mainSearchBinFragment: CallbackBinInputInterfaceAndRecycler) : BinInputFragment {
             val fragment = BinInputFragment()
             fragment.setListenerCallBack(mainSearchBinFragment)
             return fragment
         }
     }
 
-    private fun setListenerCallBack(mainSearchBinFragment: CallbackBinInputInterface) {
+    private fun setListenerCallBack(mainSearchBinFragment: CallbackBinInputInterfaceAndRecycler) {
         this.mainSearchBinFragment = mainSearchBinFragment
     }
 }
