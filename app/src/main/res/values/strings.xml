@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">BinEngine</string>
+    <string name="app_name">BinLoader</string>
+
     <string name="additional_information">Дополнительная информация</string>
     <string name="Your_card">Ваши карты</string>
     <string name="history">история запросов</string>
@@ -15,14 +16,17 @@
     <string name="user_name">Имя владельца</string>
     <string name="error_empty_field">empty field</string>
     <string name="error_mess_empty_field">введите имя</string>
+
     <string name="error_network_mess">ERROR NETWORK</string>
     <string name="input_bin">input bin:</string>
     <string name="input_your_name">input your name:</string>
     <string name="success_mess">Success</string>
     <string name="some_bank">Bank</string>
-    <string name="website">Сайт</string>
-    <string name="phone">Телефон</string>
-    <string name="country_info">Страна</string>
+
+    <string name="website">Сайт\u0020</string>
+    <string name="phone">Телефон\u0020</string>
+    <string name="country_info">Страна\u0020</string>
+
     <string name="bin">BIN</string>
     <string name="your_country">COUNTRY - </string>
     <string name="your_name">Your name</string>

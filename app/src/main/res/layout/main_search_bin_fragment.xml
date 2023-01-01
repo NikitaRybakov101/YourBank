@@ -67,14 +67,13 @@
         app:layout_constraintEnd_toStartOf="@+id/chipHistory"
         tools:ignore="SmallSp" />
 
-    <TextView
+    <com.example.yourbank.ui.customView.CustomTextView
         android:id="@+id/textYourNameCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
         android:layout_marginTop="12dp"
-        android:text="@string/your_name"
-        android:textSize="30sp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -83,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#F4FFF9"
         app:cardCornerRadius="26dp"
         app:layout_constraintTop_toBottomOf="@+id/textYourNameCard"
@@ -263,49 +262,71 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textCardNumber" />
 
-            <TextView
-                android:id="@+id/textWeb"
-                android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="20dp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textPrepaid"
-                tools:text="Сайт   www.jyskebank.dk" />
-
-            <TextView
-                android:id="@+id/textPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textWeb"
-                tools:text="Телефон   +4589893300" />
-
-            <TextView
-                android:id="@+id/textCountryInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textPhone"
-                tools:text="Страна/Город   Denmark/Hjørring" />
-
-            <TextView
-                android:id="@+id/textClickInfo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="12dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/detailed_information"
-                android:textSize="8sp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#E9F7FF"
+                app:cardCornerRadius="26dp"
+                app:strokeColor="#FFFFFF"
+                app:strokeWidth="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textCountryInfo"
-                tools:ignore="SmallSp" />
+                app:layout_constraintTop_toBottomOf="@+id/textPrepaid">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/textWeb"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="12dp"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Сайт   www.jyskebank.dk" />
+
+                    <TextView
+                        android:id="@+id/textPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textWeb"
+                        tools:text="Телефон   +4589893300" />
+
+                    <TextView
+                        android:id="@+id/textCountryInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textPhone"
+                        tools:text="Страна/Город   Denmark/Hjørring" />
+
+                    <TextView
+                        android:id="@+id/textClickInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/detailed_information"
+                        android:textSize="8sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textCountryInfo"
+                        tools:ignore="SmallSp" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

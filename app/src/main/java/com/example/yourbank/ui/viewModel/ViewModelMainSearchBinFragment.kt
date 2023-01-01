@@ -22,7 +22,7 @@ class ViewModelMainSearchBinFragment(private val retrofit: RetrofitImpl, private
         scope.launch {
             kotlin.runCatching {
 
-                delay(3000)
+                delay(1500)
                 val response = retrofit.getRetrofit().getDataCardToBin(cardItem.bin).execute()
 
                 response

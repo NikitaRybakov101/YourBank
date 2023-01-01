@@ -1,12 +1,18 @@
 package com.example.yourbank.ui.fragments
 
+import android.Manifest
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.animation.doOnEnd
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yourbank.R
@@ -27,7 +33,7 @@ import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
-import java.util.Random
+import java.util.*
 
 class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBinding>(MainSearchBinFragmentBinding::inflate) , CallbackBinInputInterfaceAndRecycler {
 
@@ -74,7 +80,6 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
                     setDataToYourCard(it, stateData.cardItem)
                     context?.showToast(getString(R.string.success_mess))
                 }
-
             }
             is StateData.Error -> {
                 binding.customProgressBar.stop()
@@ -100,8 +105,8 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
     @SuppressLint("SetTextI18n")
     private fun setDataToYourCard(responseDataYourCard: ResponseDataYourCard, cardItem: YourCardItem) = with(binding) {
-
         val nameBank = responseDataYourCard.bank.name
+
 
         if(nameBank != null) {
             textNameBank.text = nameBank
@@ -118,19 +123,67 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             textBrandCard.text = brand
             textTypeCard.text = type
 
-            textCardNumber.text = getString(R.string.card_num_length) + "  " + number.length
-            textPrepaid.text = getString(R.string.prepaid) + "  " + prepaid
+            textCardNumber.text = getString(R.string.card_num_length) + number.length
+            textPrepaid.text = getString(R.string.prepaid) + prepaid
 
             textCountryName.text = country.name
 
             textYourName.text = cardItem.name
-            textBin.text = getString(R.string.bin) + "  " + cardItem.bin
-            textYourNameCard.text = cardItem.name
+            textBin.text = getString(R.string.bin) + cardItem.bin
 
-            textWeb.text = getString(R.string.website) + "  " + bank.url
-            textPhone.text = getString(R.string.phone) + "  " + bank.phone
-            textCountryInfo.text = getString(R.string.country_info) + "  " + country.name
+            textYourNameCard.setText(cardItem.name,"null",90f)
+
+            textWeb.text = getString(R.string.website) + bank.url
+            textPhone.text = getString(R.string.phone) + bank.phone
+            textCountryInfo.text = getString(R.string.country_info) + country.name
+            setClickableInfo(this)
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun setClickableInfo(card: ResponseDataYourCard) = with(binding)  {
+        textWeb.text = getString(R.string.website) + card.bank.url
+        textWeb.setOnClickListener {
+            searchWeb(card.bank.url)
+        }
+
+        textPhone.text = getString(R.string.phone) + card.bank.phone
+        textPhone.setOnClickListener {
+            permissionCallPhone(card.bank.phone)
+        }
+
+        textCountryInfo.text = getString(R.string.country_info) + card.country.name
+        textCountryInfo.setOnClickListener {
+            openMap(card.country.latitude,card.country.longitude)
+        }
+    }
+
+    private val permissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { permissionCallPhone(binding.textPhone.text.toString().replace(getString(R.string.phone),"")) }
+    private fun requestLocationPermissions() = permissionLauncher.launch(Manifest.permission.CALL_PHONE)
+
+    private fun permissionCallPhone(phone: String) {
+        if(ActivityCompat.checkSelfPermission(requireContext(),Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            callPhone(phone)
+        } else {
+            requestLocationPermissions()
+        }
+    }
+
+    private fun callPhone(phone: String) {
+        val dialIntent = Intent(Intent.ACTION_CALL, Uri.parse("tel:$phone"))
+        startActivity(dialIntent)
+    }
+
+    private fun searchWeb(url: String) {
+        val uri = Uri.parse("https://$url")
+        val intent = Intent(Intent.ACTION_VIEW, uri)
+        startActivity(intent)
+    }
+
+    private fun openMap(latitude : String, longitude : String ) {
+        val uri = "geo:$latitude,$longitude"
+        val mapIntent =  Intent(Intent.ACTION_VIEW, Uri.parse(uri))
+        startActivity(mapIntent)
     }
 
     private fun initView() = with(binding) {
@@ -139,6 +192,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
         fragmentContainer.elevation = 0f
 
         customProgressBar.stop()
+        textYourNameCard.setText(getString(R.string.your_name),"null",90f)
 
         viewModel.loadDataCardToDB()
     }

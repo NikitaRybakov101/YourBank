@@ -34,7 +34,7 @@ class SplashScreenFragment : BaseViewBindingFragment<SplashScreenBinding>(Splash
     }
 
     private fun loadingSplash() {
-        binding.customTextView.setText(getString(R.string.app_name))
+        binding.customTextView.setText(getString(R.string.app_name),"fonts/turboSpeed.otf",90f)
     }
 
     companion object {
