@@ -43,7 +43,9 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
         private const val DURATION_ANIMATION = 1500L
         private const val ELEVATION_CARD_INPUT_BIN = 120f
         private const val YOUR_CARD_ELEVATION = 28f
-        private const val CONTAINER_CARD_ELEVATION = 15f
+        private const val CONTAINER_CARD_ELEVATION = 5f
+        private const val CONTAINER_CARD_PADDING = 50
+        private const val TEXT_SIZE_YOUR_NAME = 90f
     }
 
     private val listYourCardItem = ArrayList<YourCardItem>()
@@ -131,7 +133,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             textYourName.text = cardItem.name
             textBin.text = getString(R.string.bin) + cardItem.bin
 
-            textYourNameCard.setText(cardItem.name,"null",90f)
+            textYourNameCard.setText(cardItem.name,"null",TEXT_SIZE_YOUR_NAME)
 
             textWeb.text = getString(R.string.website) + bank.url
             textPhone.text = getString(R.string.phone) + bank.phone
@@ -189,29 +191,25 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
     private fun initView() = with(binding) {
         yourCardView.elevation = YOUR_CARD_ELEVATION
         materialCardViewContainerYourCard.elevation = CONTAINER_CARD_ELEVATION
-        fragmentContainer.elevation = 0f
+        fragmentContainer.elevation = ELEVATION_CARD_INPUT_BIN
 
         customProgressBar.stop()
-        textYourNameCard.setText(getString(R.string.your_name),"null",90f)
+        textYourNameCard.setText(getString(R.string.your_name),"null",TEXT_SIZE_YOUR_NAME)
 
         viewModel.loadDataCardToDB()
     }
 
-    private fun objectAnimation(value : Float, durationTime: Long, elevation : Float) {
+    private fun objectAnimation(value : Float, durationTime: Long) {
         ObjectAnimator.ofFloat(binding.fragmentContainer, View.Y, value).apply {
             duration = durationTime
             interpolator = AnticipateOvershootInterpolator(1f)
             start()
-        }.doOnEnd {
-            binding.fragmentContainer.elevation = elevation
         }
     }
 
     private fun checkButton() = with(binding){
         chipAddedCard.setOnClickListener {
-            if (binding.fragmentContainer.elevation == 0f) {
-                openBinInput()
-            }
+            openBinInput()
         }
     }
 
@@ -221,15 +219,13 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             .replace(R.id.fragment_container, BinInputFragment.newInstance(this@MainSearchBinFragment))
             .commit()
 
-        fragmentContainer.elevation = ELEVATION_CARD_INPUT_BIN
-
-        val viewY = ((root.height - fragmentContainer.height) / 16f)
-        objectAnimation(viewY,DURATION_ANIMATION,ELEVATION_CARD_INPUT_BIN)
+        val viewY = ((root.height - fragmentContainer.height + convertDpToPixels(CONTAINER_CARD_PADDING)) / 16f)
+        objectAnimation(viewY,DURATION_ANIMATION)
     }
 
     private fun closeBinInput() = with(binding) {
-        val viewY = 0f - fragmentContainer.height
-        objectAnimation(viewY,DURATION_ANIMATION,0f)
+        val viewY = 0f - fragmentContainer.height - convertDpToPixels(CONTAINER_CARD_PADDING)
+        objectAnimation(viewY,DURATION_ANIMATION)
     }
 
     private fun initListNotes() = with(binding) {
@@ -264,6 +260,8 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
         viewModel.sendServerToCal(cardItem)
     }
+
+    private fun convertDpToPixels(dp: Int) = (dp * requireContext().resources.displayMetrics.density).toInt()
 
     private fun generateItem(bin: String, userName: String): YourCardItem {
         val random = Random()
