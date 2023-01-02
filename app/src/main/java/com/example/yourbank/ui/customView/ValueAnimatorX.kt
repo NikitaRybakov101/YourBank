@@ -10,6 +10,7 @@ class ValueAnimatorX(var x1: Float, var x2: Float) {
 
     var vector = 1
     var currentX = x1
+    var speed = 0f
 
     private fun valueAnimator() {
         if(flag) {
@@ -26,7 +27,7 @@ class ValueAnimatorX(var x1: Float, var x2: Float) {
 
     private fun boundsValue(deltaTime: Long) {
 
-        val speed = vectorFunction(currentX)
+        speed = vectorFunction(currentX)
         currentX += speed * vector * (deltaTime / 1000f)
 
         if(currentX > x2) currentX = x2
