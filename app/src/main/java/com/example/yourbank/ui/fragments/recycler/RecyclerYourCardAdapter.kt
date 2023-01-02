@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.yourbank.databinding.CardItemsBinding
 import com.example.yourbank.ui.fragments.CallbackBinInputInterfaceAndRecycler
+import com.example.yourbank.ui.fragments.HistoryFragment
 import com.example.yourbank.ui.fragments.YourCardItem
 
 class RecyclerYourCardAdapter(private val listYourCardItem: ArrayList<YourCardItem>, private val fragment: CallbackBinInputInterfaceAndRecycler) : RecyclerView.Adapter<RecyclerYourCardAdapter.ViewHolderYourCard>() {

@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -90,6 +89,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             is StateData.SuccessLoadingDB -> {
                 loadingCardToDataBase(stateData.data)
             }
+            else -> {}
         }
     }
 
@@ -237,6 +237,10 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
         closeBinInput()
         addItemToRecycler(bin,userName)
 
+        val cardItem = generateItem(bin,userName)
+
+        viewModel.sendServerToCal(cardItem)
+        viewModel.saveDataCardToDbHistorySend(cardItem)
         viewModel.saveDataCardToDB(generateItem(bin,userName))
     }
 
@@ -246,10 +250,11 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
     override fun callbackRecycler(cardItem: YourCardItem) {
         viewModel.sendServerToCal(cardItem)
+        viewModel.saveDataCardToDbHistorySend(cardItem)
     }
 
     override fun callbackRecyclerDeleteCard(cardItem: YourCardItem) {
-        viewModel.deleteNotes(cardItem)
+        viewModel.deleteCard(cardItem)
     }
 
     private fun addItemToRecycler(bin: String, userName: String) {
@@ -257,8 +262,6 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
         listYourCardItem.add(cardItem)
         recyclerView.notifyItemInserted(listYourCardItem.size + 1)
-
-        viewModel.sendServerToCal(cardItem)
     }
 
     private fun convertDpToPixels(dp: Int) = (dp * requireContext().resources.displayMetrics.density).toInt()

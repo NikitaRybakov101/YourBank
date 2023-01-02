@@ -34,6 +34,8 @@
     <string name="prepaid">PREPAID -</string>
     <string name="bin_loader">Bin Loader</string>
     <string name="history_bottom_bar">History</string>
-    <string name="info_bottom_bar">Info</string>
+    <string name="info_bottom_bar">О приложении</string>
     <string name="information">Приложение для поиска даных банка карты по BIN коду</string>
+    <string name="history_header">Истоия запросов</string>
+    <string name="delete_history">удалить историю</string>
 </resources>

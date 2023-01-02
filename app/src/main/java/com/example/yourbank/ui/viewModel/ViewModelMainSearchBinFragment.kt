@@ -3,9 +3,11 @@ package com.example.yourbank.ui.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yourbank.dataBaseRoom.dao.DaoDbYourCard
+import com.example.yourbank.dataBaseRoom.entities.HistorySendEntities
 import com.example.yourbank.dataBaseRoom.entities.YourSavedCardEntities
 import com.example.yourbank.repository.RetrofitImpl
 import com.example.yourbank.ui.fragments.YourCardItem
+import com.example.yourbank.ui.viewModel.intarfaceViewModel.ViewModelMainSearchBinFragmentInterface
 import kotlinx.coroutines.*
 
 class ViewModelMainSearchBinFragment(private val retrofit: RetrofitImpl, private val daoDbYourCard: DaoDbYourCard) : ViewModel() , ViewModelMainSearchBinFragmentInterface {
@@ -59,7 +61,13 @@ class ViewModelMainSearchBinFragment(private val retrofit: RetrofitImpl, private
         }
     }
 
-    override fun deleteNotes(cardItem: YourCardItem) {
+    override fun saveDataCardToDbHistorySend(card : YourCardItem)  {
+        scope.launch {
+            daoDbYourCard.insertHistorySend(HistorySendEntities(bin = card.bin, nameUser = card.name, time = "time"))
+        }
+    }
+
+    override fun deleteCard(cardItem: YourCardItem) {
         scope.launch {
             daoDbYourCard.deleteSavedCard(cardItem.bin)
         }

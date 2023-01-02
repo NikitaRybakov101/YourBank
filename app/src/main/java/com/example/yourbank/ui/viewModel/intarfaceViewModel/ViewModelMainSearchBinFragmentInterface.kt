@@ -1,7 +1,8 @@
-package com.example.yourbank.ui.viewModel
+package com.example.yourbank.ui.viewModel.intarfaceViewModel
 
 import androidx.lifecycle.MutableLiveData
 import com.example.yourbank.ui.fragments.YourCardItem
+import com.example.yourbank.ui.viewModel.StateData
 
 interface ViewModelMainSearchBinFragmentInterface {
     fun getLiveData() : MutableLiveData<StateData>
@@ -9,5 +10,7 @@ interface ViewModelMainSearchBinFragmentInterface {
 
     fun loadDataCardToDB()
     fun saveDataCardToDB(card : YourCardItem)
-    fun deleteNotes(cardItem: YourCardItem)
+    fun deleteCard(cardItem: YourCardItem)
+
+    fun saveDataCardToDbHistorySend(card : YourCardItem)
 }
