@@ -14,7 +14,7 @@ abstract class BaseViewBindingFragment<VB : ViewBinding>(val inflate: (LayoutInf
     private var _binding: VB? = null
 
     val binding
-    get() = _binding ?: throw IllegalStateException("Trying to access binding")
+     get() = _binding ?: throw IllegalStateException("Trying to access binding")
 
     val uiScope by lazy {
         CoroutineScope(Dispatchers.Main)

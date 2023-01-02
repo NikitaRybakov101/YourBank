@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_root"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/mainSearchBinFragment"
+        android:name="com.example.yourbank.ui.fragments.MainSearchBinFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/main_search_bin_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.example.yourbank.ui.fragments.HistoryFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/history_fragment" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.yourbank.ui.fragments.InfoFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/info_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/binFragment"
+        android:name="com.example.yourbank.ui.fragments.BinInputFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/bin_input_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.yourbank.ui.splash_screen_fragment.SplashScreenFragment"
+        android:label="SplashScreenFragment"
+        tools:layout="@layout/splash_screen">
+
+        <action
+            android:id="@+id/action_splashScreenFragment_to_MainSearchBinFragment"
+            app:destination="@id/mainSearchBinFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

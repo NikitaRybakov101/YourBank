@@ -32,4 +32,8 @@
     <string name="your_name">Your name</string>
     <string name="card_num_length">CARD NUM LENGTH -</string>
     <string name="prepaid">PREPAID -</string>
+    <string name="bin_loader">Bin Loader</string>
+    <string name="history_bottom_bar">History</string>
+    <string name="info_bottom_bar">Info</string>
+    <string name="information">Приложение для поиска даных банка карты по BIN коду</string>
 </resources>

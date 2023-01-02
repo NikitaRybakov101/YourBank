@@ -46,33 +46,22 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.chip.Chip
-        android:id="@+id/chipHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="@string/history"
-        android:textSize="10sp"
-        app:layout_constraintBottom_toTopOf="@+id/materialCardViewContainerYourCard"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SmallSp" />
-
-    <com.google.android.material.chip.Chip
         android:id="@+id/chipAddedCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_card"
-        android:layout_marginEnd="8dp"
         android:textSize="10sp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@+id/materialCardViewContainerYourCard"
-        app:layout_constraintEnd_toStartOf="@+id/chipHistory"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SmallSp" />
 
     <com.example.yourbank.ui.customView.CustomTextView
         android:id="@+id/textYourNameCard"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="12dp"
         android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -119,10 +108,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                tools:text="Ваш банк"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Ваш банк" />
 
             <TextView
                 android:id="@+id/textYourName"
@@ -130,18 +119,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
-                tools:text="NIKITA RYBAKOV"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="NIKITA RYBAKOV" />
 
             <TextView
                 android:id="@+id/textBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/brand"
                 android:alpha="0"
+                android:text="@string/brand"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="@+id/textNameBank"
                 app:layout_constraintTop_toBottomOf="@+id/textNameBank" />
@@ -150,11 +139,11 @@
                 android:id="@+id/textBrandCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Visa/Dankort"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/textBrand"
                 app:layout_constraintTop_toBottomOf="@+id/textBrand"
-                tools:ignore="SmallSp" />
+                tools:ignore="SmallSp"
+                tools:text="Visa/Dankort" />
 
             <TextView
                 android:id="@+id/textType"
@@ -162,8 +151,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/type"
                 android:alpha="0"
+                android:text="@string/type"
                 android:textSize="12sp"
                 app:layout_constraintStart_toEndOf="@+id/textBrand"
                 app:layout_constraintTop_toBottomOf="@+id/textNameBank" />
@@ -172,19 +161,19 @@
                 android:id="@+id/textTypeCard"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Debit/Credit"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="@+id/textType"
                 app:layout_constraintTop_toBottomOf="@+id/textType"
-                tools:ignore="SmallSp" />
+                tools:ignore="SmallSp"
+                tools:text="Debit/Credit" />
 
             <TextView
                 android:id="@+id/textCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
-                android:textSize="12sp"
                 android:layout_marginBottom="8dp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/textCountryName"
                 tools:text="@string/country" />
@@ -194,22 +183,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                tools:text="ваша страна"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textCountry"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textCountry" />
+                app:layout_constraintTop_toTopOf="@+id/textCountry"
+                tools:text="ваша страна" />
 
             <TextView
                 android:id="@+id/textBin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                tools:text="BIN 4571 7360"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/textYourName"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textBrandCard" />
+                app:layout_constraintTop_toBottomOf="@+id/textBrandCard"
+                tools:text="BIN 4571 7360" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -247,20 +236,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
-                tools:text="CARD NUM LENGTH 16"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInfo" />
+                app:layout_constraintTop_toBottomOf="@+id/textInfo"
+                tools:text="CARD NUM LENGTH 16" />
 
             <TextView
                 android:id="@+id/textPrepaid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="PREPAID - Yes"
-                android:textSize="12sp"
                 android:layout_marginStart="16dp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textCardNumber" />
+                app:layout_constraintTop_toBottomOf="@+id/textCardNumber"
+                tools:text="PREPAID - Yes" />
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -268,10 +257,10 @@
                 android:layout_marginTop="8dp"
                 android:backgroundTint="#E9F7FF"
                 app:cardCornerRadius="26dp"
-                app:strokeColor="#FFFFFF"
-                app:strokeWidth="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textPrepaid">
+                app:layout_constraintTop_toBottomOf="@+id/textPrepaid"
+                app:strokeColor="#BFBFBF"
+                app:strokeWidth="1dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -327,7 +316,6 @@
             </com.google.android.material.card.MaterialCardView>
 
 
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -337,7 +325,8 @@
         android:layout_width="match_parent"
         android:layout_height="480dp"
         android:layout_marginHorizontal="36dp"
-        android:elevation="10dp"
+        android:elevation="50dp"
+        android:layout_marginBottom="50dp"
         app:cardCornerRadius="46dp"
         app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

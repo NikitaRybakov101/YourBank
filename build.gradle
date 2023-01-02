@@ -6,6 +6,7 @@ buildscript {
         retrofit_version = "2.9.0"
         coroutines_version = "1.6.4"
         room_version = "2.5.0-alpha02"
+        navigation_version = '2.5.0'
     }
 }
 
