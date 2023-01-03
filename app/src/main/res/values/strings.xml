@@ -27,7 +27,7 @@
     <string name="phone">Телефон\u0020</string>
     <string name="country_info">Страна\u0020</string>
 
-    <string name="bin">BIN</string>
+    <string name="bin">BIN\u0020</string>
     <string name="your_country">COUNTRY - </string>
     <string name="your_name">Your name</string>
     <string name="card_num_length">CARD NUM LENGTH -</string>
@@ -38,4 +38,7 @@
     <string name="information">Приложение для поиска даных банка карты по BIN коду</string>
     <string name="history_header">Истоия запросов</string>
     <string name="delete_history">удалить историю</string>
+    <string name="network_error_body">NetWork ERROR body</string>
+    <string name="network_error_exp_mess">NetWork ERROR</string>
+    <string name="loading_mess">Loading</string>
 </resources>

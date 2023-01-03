@@ -28,7 +28,7 @@ val applicationModule = module {
 
 val viewModelModule = module {
     viewModel(named(VIEW_MODEL)) { (retrofit: RetrofitImpl, dao : DaoDbYourCard) ->
-        ViewModelMainSearchBinFragment(retrofit,dao)
+        ViewModelMainSearchBinFragment(retrofit,dao,androidContext())
     }
 
     viewModel(named(VIEW_MODEL_HISTORY)) { (dao : DaoDbYourCard) ->

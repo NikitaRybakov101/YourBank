@@ -44,11 +44,11 @@
                 android:layout_gravity=""
                 android:layout_marginVertical="8dp"
                 android:layout_marginEnd="16dp"
-                tools:text="time 21/12/2023"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="time 21/12/2023" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

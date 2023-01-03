@@ -7,7 +7,7 @@ data class ResponseDataYourCard (
     @field:SerializedName("scheme")  val scheme: String,
     @field:SerializedName("brand")   val brand: String,
 
-    @field:SerializedName("country")   val country: Country,
+    @field:SerializedName("country")   val country: Country?,
     @field:SerializedName("bank")   val bank: Bank,
     @field:SerializedName("prepaid")   val prepaid: String,
     @field:SerializedName("number")   val number: Number

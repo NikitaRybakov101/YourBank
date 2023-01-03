@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.yourbank.R
 import com.example.yourbank.dataBaseRoom.entities.HistorySendEntities
 import com.example.yourbank.databinding.CardItemHistoryBinding
 
@@ -21,8 +22,8 @@ class RecyclerHistoryAdapter(val listHistory : ArrayList<HistorySendEntities>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolderHistory, position: Int) {
 
-        holder.binCode.text = "BIN " + listHistory[position].bin
-        holder.textTime.text = "time 21/12/2023"
+        holder.binCode.text = holder.binCode.context.getString(R.string.bin) + listHistory[position].bin
+        holder.textTime.text = listHistory[position].time
     }
 
     override fun getItemCount(): Int {

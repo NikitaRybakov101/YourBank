@@ -128,7 +128,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             textCardNumber.text = getString(R.string.card_num_length) + number.length
             textPrepaid.text = getString(R.string.prepaid) + prepaid
 
-            textCountryName.text = country.name
+            textCountryName.text = country?.name ?: ""
 
             textYourName.text = cardItem.name
             textBin.text = getString(R.string.bin) + cardItem.bin
@@ -137,7 +137,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
             textWeb.text = getString(R.string.website) + bank.url
             textPhone.text = getString(R.string.phone) + bank.phone
-            textCountryInfo.text = getString(R.string.country_info) + country.name
+            textCountryInfo.text = getString(R.string.country_info) + (country?.name ?: "")
             setClickableInfo(this)
         }
     }
@@ -154,9 +154,9 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             permissionCallPhone(card.bank.phone)
         }
 
-        textCountryInfo.text = getString(R.string.country_info) + card.country.name
+        textCountryInfo.text = getString(R.string.country_info) + (card.country?.name ?: "")
         textCountryInfo.setOnClickListener {
-            openMap(card.country.latitude,card.country.longitude)
+            card.country?.let { it -> openMap(card.country.latitude, it.longitude) }
         }
     }
 

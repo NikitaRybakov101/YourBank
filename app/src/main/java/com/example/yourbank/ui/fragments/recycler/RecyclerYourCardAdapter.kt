@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.yourbank.R
 import com.example.yourbank.databinding.CardItemsBinding
 import com.example.yourbank.ui.fragments.CallbackBinInputInterfaceAndRecycler
 import com.example.yourbank.ui.fragments.HistoryFragment
@@ -28,7 +29,7 @@ class RecyclerYourCardAdapter(private val listYourCardItem: ArrayList<YourCardIt
         holder.itemClicked()
 
         holder.textNameCard.text = yourCardItem.name
-        holder.textBinCard.text = "BIN " + yourCardItem.bin
+        holder.textBinCard.text = holder.textBinCard.context.getString(R.string.bin) + yourCardItem.bin
         holder.viewColorFilter.setBackgroundColor(yourCardItem.color)
     }
 
