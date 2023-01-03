@@ -10,8 +10,8 @@
         android:id="@+id/textNameCard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nikita Rybakov"
         android:layout_marginStart="12dp"
+        tools:text="Nikita Rybakov"
         android:textSize="8sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,9 +30,9 @@
         android:id="@+id/materialCardViewYourCard"
         android:layout_width="90dp"
         android:layout_height="40dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         app:cardCornerRadius="8dp"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,8 +48,8 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
             android:alpha="0.4"
+            android:scaleType="centerCrop"
             android:src="@drawable/card_image_item" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="4dp"
-            android:text="BIN 04447777"
+            tools:text="BIN 04447777"
             android:textSize="8sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

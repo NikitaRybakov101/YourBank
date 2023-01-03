@@ -29,6 +29,10 @@ class CardAnimationToSplashScreen @JvmOverloads constructor(context : Context, a
     private val nx = 7f
     private val ny = 3f
 
+    private val colorYellow =  Color.rgb(255, 222, 0)
+    private val colorYellowLight =  Color.rgb(255, 234, 88)
+    private val colorYellowExtraLight =  Color.rgb(255, 249, 201)
+
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
@@ -39,7 +43,7 @@ class CardAnimationToSplashScreen @JvmOverloads constructor(context : Context, a
 
     private fun createListSquares(width: Int, height : Int) {
 
-        val color = Color.rgb(255, 222, 0)
+        val color = colorYellow
         val side  = ((width - (nx+1) * padding)/ nx)
 
         for (i in 0..((nx-1).toInt())) {
@@ -75,17 +79,17 @@ class CardAnimationToSplashScreen @JvmOverloads constructor(context : Context, a
 
             if(square.i == value.toInt() - 1 || square.i == value.toInt() + 1) {
                 square.y = square.immutableY - convertDpToPixels(5)
-                square.color = Color.rgb(255, 234, 88)
+                square.color = colorYellowLight
             }
 
             if(square.i == value.toInt()) {
                 square.y = square.immutableY - convertDpToPixels(10)
-                square.color = Color.rgb(255, 249, 201)
+                square.color = colorYellowExtraLight
             }
 
             if(square.i < value.toInt() - 1 || square.i > value.toInt() + 1) {
                 square.y = square.immutableY
-                square.color = Color.rgb(255, 222, 0)
+                square.color = colorYellow
             }
         }
         listSquares.forEach { square -> drawSquare(canvas,square) }

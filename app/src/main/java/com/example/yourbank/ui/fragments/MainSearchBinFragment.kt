@@ -11,7 +11,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.AnticipateOvershootInterpolator
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -90,6 +89,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             is StateData.SuccessLoadingDB -> {
                 loadingCardToDataBase(stateData.data)
             }
+            else -> {}
         }
     }
 
@@ -128,7 +128,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             textCardNumber.text = getString(R.string.card_num_length) + number.length
             textPrepaid.text = getString(R.string.prepaid) + prepaid
 
-            textCountryName.text = country.name
+            textCountryName.text = country?.name ?: ""
 
             textYourName.text = cardItem.name
             textBin.text = getString(R.string.bin) + cardItem.bin
@@ -137,7 +137,7 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
             textWeb.text = getString(R.string.website) + bank.url
             textPhone.text = getString(R.string.phone) + bank.phone
-            textCountryInfo.text = getString(R.string.country_info) + country.name
+            textCountryInfo.text = getString(R.string.country_info) + (country?.name ?: "")
             setClickableInfo(this)
         }
     }
@@ -154,9 +154,9 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
             permissionCallPhone(card.bank.phone)
         }
 
-        textCountryInfo.text = getString(R.string.country_info) + card.country.name
+        textCountryInfo.text = getString(R.string.country_info) + (card.country?.name ?: "")
         textCountryInfo.setOnClickListener {
-            openMap(card.country.latitude,card.country.longitude)
+            card.country?.let { it -> openMap(card.country.latitude, it.longitude) }
         }
     }
 
@@ -237,6 +237,10 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
         closeBinInput()
         addItemToRecycler(bin,userName)
 
+        val cardItem = generateItem(bin,userName)
+
+        viewModel.sendServerToCal(cardItem)
+        viewModel.saveDataCardToDbHistorySend(cardItem)
         viewModel.saveDataCardToDB(generateItem(bin,userName))
     }
 
@@ -246,10 +250,11 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
     override fun callbackRecycler(cardItem: YourCardItem) {
         viewModel.sendServerToCal(cardItem)
+        viewModel.saveDataCardToDbHistorySend(cardItem)
     }
 
     override fun callbackRecyclerDeleteCard(cardItem: YourCardItem) {
-        viewModel.deleteNotes(cardItem)
+        viewModel.deleteCard(cardItem)
     }
 
     private fun addItemToRecycler(bin: String, userName: String) {
@@ -257,8 +262,6 @@ class MainSearchBinFragment : BaseViewBindingFragment<MainSearchBinFragmentBindi
 
         listYourCardItem.add(cardItem)
         recyclerView.notifyItemInserted(listYourCardItem.size + 1)
-
-        viewModel.sendServerToCal(cardItem)
     }
 
     private fun convertDpToPixels(dp: Int) = (dp * requireContext().resources.displayMetrics.density).toInt()
